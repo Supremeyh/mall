@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.defineProperty</title>
+</head>
+<body>
+    <input type="text" id="userInput" class="userInput">
+    <p id="userShow" class="userShow"></p>
+    <script>
+        //字面量形式情况下，对象各属性的特性默认是true
+        var obj = {
+            id: '111',
+            name: '222'
+        } 
+        //一旦使用Object.defineProperty给对象添加属性，那么configurable、enumerable、writable这些值都为默认的false  
+        Object.defineProperty(obj, 'name', {
+            value: 'hhaha', //属性对应的值,可任意类型，默认为undefined
+            configurable: false,  //是否可以删除目标属性或是否可以再次修改属性的特性（writable, configurable, enumerable),默认为false
+            enumerable: false, //此属性是否可以被枚举（使用for...in或Object.keys()）,默认为false
+            writable: true //属性的值是否可以被重写,默认为false
+
+        })
+        
+        let toBeChange = 'not yet'
+        //存取器 当使用了getter或setter方法，不允许使用writable和value这两个属性
+        Object.defineProperty(obj, 'value', {
+            get() {
+                console.log('get')
+                return 'drink'
+
+            },
+            set(newVal) {
+                toBeChange = 'changed'
+                console.log('set')
+                document.querySelector('#userShow').innerHTML = newVal
+
+            },
+            configurable: true,
+            enumerable: true
+        })
+
+        //通过事件人为触发
+        document.querySelector('#userInput').addEventListener('keyup', function(eve) {
+            document.querySelector('#userShow').innerHTML = eve.target.value
+        })
+    </script>
+
+    <style>
+        .userInput{
+            width: 300px;
+            height: 32px;
+            line-height: 32px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            outline:none;
+            box-sizing: border-box;
+        }
+        .userShow{
+            width: 300px;
+            height: 32px;
+            line-height: 32px;
+            padding: 0 10px;
+            border: 1px solid #009;
+            box-sizing: border-box;
+        }
+        
+    </style>
+</body>
+</html>
