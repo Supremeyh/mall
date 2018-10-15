@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/china',
-      name: 'China',
+      name: 'china',
       component: China,
       children: [
         {
