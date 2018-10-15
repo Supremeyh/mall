@@ -1,21 +1,13 @@
-# demo4
+# demo4 vue基础
 
 > A Vue.js project
 
-## Build Setup
+## 父子组件间通信
+> 父组件通过 prop 给子组件下发数据，子组件通过$emit触发事件给父组件发送消息，即 prop 向下传递，事件向上传递。props down, events up.
 
-``` bash
-# install dependencies
-npm install
+## 路由
+* SPA缺点：不利于SEO; 
+* 浏览器前进后退会重新发送请求，没有合理利用缓存; 
+* 无法记住之前滚动的位置;
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
