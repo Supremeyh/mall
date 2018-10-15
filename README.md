@@ -3,10 +3,10 @@ Vue2.0+Node.js+MongoDB  全栈打造商城系统
 
 一、vue-cli 3
 全局安装vue cli3: npm i -g @vue/cli
-常见项目： vue create demo4
+常见项目： vue create demo3
 或者，
 使用vue cli 2: npm i -g @vue/cli-init
-vue init webpack demo4
+vue init webpack demo3
 
 
 二、用到的git命令
@@ -21,4 +21,6 @@ git pull //可以省略
 /config/index中，config.build.productionSourceMap: false,
 /build/webpack.prod.conf.js中，new webpack.optimize.CommonsChunkPlugin({}) 三项vendor、manifest、app都注释
 
-
+2、省略引用文件时名字后缀与路径
+后缀省略webpack.base.conf.js中，extensions: ['.js', '.vue', '.json'],
+路径依赖alias: { 'vue$': 'vue/dist/vue.esm.js', '@': resolve('src') }
