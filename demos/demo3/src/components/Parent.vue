@@ -5,6 +5,7 @@
       <Child :msg="msgs" @childsay="parentGet"/>
       <p>父: {{msgs}}</p>
       <p>{{fromchild}}</p>
+      <p>父组件通过 prop 给子组件下发数据，子组件通过$emit触发事件给父组件发送消息，即 prop 向下传递，事件向上传递。</p>
   </div>
 </template>
 

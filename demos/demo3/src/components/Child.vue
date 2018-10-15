@@ -2,7 +2,7 @@
     <div class="counter">
         <p>子自: {{messenge}}</p>
         <p>子: {{msg}}</p>
-        <button @click="say">change</button>
+        <button @click="say">send messenge to parent</button>
     </div>
 </template>
 
