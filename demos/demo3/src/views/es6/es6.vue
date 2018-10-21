@@ -11,8 +11,8 @@
         name: 'ES6',
         methods: {
             print(){  
-                // console.log(`sum: ${sum(2, 3)}, minus:${minus(5, 7)}`)
                 // console.log(`sum: ${utils.sum(2, 3)}, minus:${utils.minus(5, 7)}`)
+                console.log(`sum: ${sum(2, 3)}, minus:${minus(5, 7)}`)
             }
         }
     })
