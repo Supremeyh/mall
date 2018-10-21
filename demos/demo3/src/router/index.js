@@ -5,6 +5,7 @@ import Dynamic from '../views/dynamicRoute/Dynamic'
 import China from '../views/nestedroutes/China'
 import Beijing from '../views/nestedroutes/Beijing'
 import Shanghai from '../views/nestedroutes/Shanghai'
+import ES6 from '../views/es6/es6.vue'
 
 Vue.use(Router)
 
@@ -13,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'China',
-      component: China
+      name: 'ES6',
+      component: ES6
     },
     {
       path: '/parent',
