@@ -3,3 +3,7 @@
         godlist
     </div>
 </template>
+
+<script>
+    
+</script>
