@@ -2,7 +2,7 @@
   "name": "mall",
   "version": "1.0.0",
   "description": "Vue2.0+Node.js+MongoDB 全栈打造商城系统",
-  "author": "sea",
+  "author": "supremeyh <supremeyh@126.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
