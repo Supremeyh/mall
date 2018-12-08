@@ -3,6 +3,7 @@
         <nav-header></nav-header>
         <nav-bread>
             <span>Goods</span>
+            <span>phone</span>
         </nav-bread>
         <nav-footer></nav-footer>
     </div>

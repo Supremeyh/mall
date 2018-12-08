@@ -1,0 +1,24 @@
+{
+    "status": "0",
+    "msg": "",
+    "result": [
+        {
+            "productId": "001",
+            "productName": "Iphone Xs",
+            "prodcutPrice": 10099,
+            "productImg": "1.jpg"
+        },
+        {
+            "productId": "002",
+            "productName": "Xiaomi",
+            "prodcutPrice": 2499,
+            "productImg": "2.jpg"
+        },
+        {
+            "productId": "003",
+            "productName": "Huawei",
+            "prodcutPrice": 4099,
+            "productImg": "3.jpg"
+        }
+    ]
+}
