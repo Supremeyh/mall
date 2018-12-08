@@ -103,32 +103,18 @@ mongod --config /usr/local/etc/mongod.conf  非授权方式进入
 show dbs
 切换admin
 use admin
-创建账号
+创建账号， 创建管理员
 db.createUser({user:'admin',pwd:'admin',roles:['root]})   
-db.auth('admin, 'admin')   认证
+db.auth('admin, 'admin')   授权认证
 
 切换test
 use test
-创建账号
+创建账号， 给使用的数据库添加用户
 db.createUser({user:'root',pwd:'12345',roles:[{role:'dbOwner',db:'test'}]})
 
 再次启动
 mongod --config /usr/local/etc/mongod.conf  --auth   授权方式进入
 使用GUI， 如MongoHub 输入密码连接test 数据库
-
-
-
-
-
-
-七、创建 mongodb
-1、创建管理员
-mongod  启动
-
-
-2、授权认证
-
-3、给使用的数据库添加用户
 
 
 ```
