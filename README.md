@@ -51,4 +51,84 @@ npm start
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+
+五、服务器搭建 mongodb
+1、下载
+2、上传至服务器  
+scp  ./mongodb.tar.gz  root@127.0.0.1:/   (/表示根目录， 若传文件夹 -r )
+3、解压，重命名 为mongodb
+4、创建数据、日志、配置的目录和文件 
+mkdir /mongodb/data、 /mongodb/logs 、 /mongodb/etc
+touch mongo.log
+vi mongo.conf
+5、配置 mongo.conf:
+dbpath = /mongodb/data
+logpath = /mongodb/logs/mongod.log
+logappend = true  (日志追加级别，不覆盖)
+journal = true
+quiet = true  (调试false)
+port = 27017
+
+6、启动 mongodb
+cd mongodb/bin 
+mongod -f  /mongodb/etc/mongo.conf
+
+7、创建软链接
+ln -s  /mongodb/bin/mongo  /usr/bin/mongo
+ln -s  /mongodb/bin/mongod  /usr/bin/mongod
+
+8、操作数据库
+show dbs  
+use test
+db.gods.insert((id: 1, name: 'god1'))
+db.gods.find()
+
+
+六、mac 使用 brew 安装配置mongodb
+1、查看是否安装
+brew list , 或者 brew search mongodb, 或者 which mongod
+
+2、安装
+brew install mongodb
+
+3、常见错误
+1> 有一个进程已经在端口中运行  Failed to set up listener: SocketException: Address already in use：
+lsof -i :27017    kill -9 407   杀死进程  
+mongod -p 27018  指定其他端口
+2>
+
+4、启动
+mongod --config /usr/local/etc/mongod.conf  非授权方式进入
+打开新window: mongo 
+show dbs
+切换admin
+use admin
+创建账号
+db.createUser({user:'admin',pwd:'admin',roles:['root]})   
+db.auth('admin, 'admin')   认证
+
+切换test
+use test
+创建账号
+db.createUser({user:'root',pwd:'12345',roles:[{role:'dbOwner',db:'test'}]})
+
+再次启动
+mongod --config /usr/local/etc/mongod.conf  --auth   授权方式进入
+使用GUI， 如MongoHub 输入密码连接test 数据库
+
+
+
+
+
+
+七、创建 mongodb
+1、创建管理员
+mongod  启动
+
+
+2、授权认证
+
+3、给使用的数据库添加用户
+
+
 ```
