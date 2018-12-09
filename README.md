@@ -117,4 +117,45 @@ mongod --config /usr/local/etc/mongod.conf  --auth   授权方式进入
 使用GUI， 如MongoHub 输入密码连接test 数据库
 
 
+七、 mongodb 常见语法
+nosql
+1、对比SQL
+sql                 mongodb          解释/说明
+database           database          数据库
+table              collection       数据库表/集合
+row                docuemnt         数据记录行/文档
+column             filed             数据字段/域
+index              index              索引
+table joins                       表连接/mongodb不支持
+primary key       primary key     主键，mongodb自动将_id字段设置为主键
+
+2、基本语法
+mongod  -f /usr/local/etc/mongod.conf    非授权方式 启动数据库
+打开新window: mongo 
+show dbs  查看数据库
+use test  创建数据库
+db.createCollection('user') , 或者 db.users.insert({id: 123, name: 'zhao'})    创建集合
+show collections 
+db.dropDatabase()    删除数据库
+db.user.drop()    删除集合
+
+db.user.insert({id: 1, name: 'zhao', age: 20, class: {name: 'gh', num: 32}})   新增数据
+
+db.user.find()    查询数据
+db.user.find().pretty()     查询数据，且格式化
+db.user.findOne()   查询第一条数据
+db.user.find({name: 'zhao'})   查询子文档
+db.user.find({'class.name': 'gh'})   查询子文档
+db.user.find({age: {$gte: 20}})   查询  条件符
+
+db.user.update({name: 'qian'}, {$set: {age: 21}})   修改数据
+db.user.update({name: 'qian'}, {$set: {'class.name': 'tc'}})    修改数据
+
+db.user.remove({ id: 1 })   删除
+
+
+
+
+
+
 ```
