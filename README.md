@@ -154,8 +154,6 @@ db.user.update({name: 'qian'}, {$set: {'class.name': 'tc'}})    修改数据
 db.user.remove({ id: 1 })   删除
 
 
-
-
-
+mongoimport  -d  test  -c user  --file  /path/file    导入数据
 
 ```
