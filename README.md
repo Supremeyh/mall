@@ -156,4 +156,15 @@ db.user.remove({ id: 1 })   删除
 
 mongoimport  -d  test  -c user  --file  /path/file    导入数据
 
+
+
+八、node启动与调试
+pm2 start app.js  启动
+pm2 list  查看已启动进程
+pm2 monit   监控进程
+pm2 logs 日志
+pm2 stop  <app_name|id|'all'|json_conf>  停止
+
+
+
 ```
