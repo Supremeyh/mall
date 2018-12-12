@@ -166,5 +166,61 @@ pm2 logs 日志
 pm2 stop  <app_name|id|'all'|json_conf>  停止
 
 
+九、mongoose
+启动数据库  mongod --config /usr/local/etc/mongod.conf
+
+npm install mongoose  --save  安装
+
+// app.js   配置跟路由
+var goodsRouter = require('./routes/goods');
+app.use('/goods', goodsRouter);
+
+
+//  models/goods.js    配置模型
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+
+const productSchema = new Schema({
+  "productId": String,
+  "productName": { type: String },
+  "salePrice": Number,
+  "productImage": String
+})
+
+module.exports = mongoose.model('Good', productSchema)
+// module.exports = mongoose.model('Good', productSchema, 'goods') // 若mongodb的collection为good,不是goods
+
+
+//   routes/goods.js   配置路由及业务逻辑
+var express = require('express')
+var router = express.Router()
+
+var mongoose = require('mongoose')
+
+var Goods = require('../models/goods')
+
+// 连接mongodb数据库
+mongoose.connect('mongodb://root:aa123456@127.0.0.1:27017/mall')
+mongoose.connect('mongodb://127.0.0.1:27017/mall')
+
+// 监听
+mongoose.connection.on('connected', function() {
+  console.log('mongoose connected')
+})
+mongoose.connection.on('error', function() {
+  console.log('mongoose connected fail')
+})
+mongoose.connection.on('disconnected', function() {
+  console.log('mongoose connected disconnected')
+})
+
+router.get('/', function(req, res, next) {
+  res.send('goods list')
+})
+
+module.exports = router
+
+
+
 
 ```

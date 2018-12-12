@@ -10,6 +10,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     import '../assets/css/base.css'
     import '../assets/css/product.css'
     import NavHeader from '../components/NavHeader.vue';
@@ -27,6 +28,12 @@
             NavHeader,
             NavFooter,
             NavBread 
+        },
+        mounted(){
+          axios.get('/goods').then((res) => {
+            console.log(res)
+            
+          })
         }
     }
     
