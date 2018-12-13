@@ -168,6 +168,9 @@ pm2 stop  <app_name|id|'all'|json_conf>  停止
 
 九、mongoose
 启动数据库  mongod --config /usr/local/etc/mongod.conf
+启动node server端 pm2 start src/server/bin/www
+启动client端 npm run dev 
+
 
 npm install mongoose  --save  安装
 
@@ -191,7 +194,7 @@ module.exports = mongoose.model('Good', productSchema)
 // module.exports = mongoose.model('Good', productSchema, 'goods') // 若mongodb的collection为good,不是goods
 
 
-//   routes/goods.js   配置路由及业务逻辑
+//  routes/goods.js   配置路由及业务逻辑
 var express = require('express')
 var router = express.Router()
 
@@ -200,7 +203,7 @@ var mongoose = require('mongoose')
 var Goods = require('../models/goods')
 
 // 连接mongodb数据库
-mongoose.connect('mongodb://root:aa123456@127.0.0.1:27017/mall')
+// mongoose.connect('mongodb://root:aa123456@127.0.0.1:27017/mall')
 mongoose.connect('mongodb://127.0.0.1:27017/mall')
 
 // 监听

@@ -42,9 +42,6 @@ router.get('/', function(req, res, next) {
       })
     }
   })
-
-  res.send('goods list')
-  // res.render('index', {title: 'title'})
 })
 
 

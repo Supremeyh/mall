@@ -11,4 +11,4 @@ var productSchema = new Schema({
 
 
 // module.exports = mongoose.model('Good', productSchema)
-module.exports = mongoose.model('Good', productSchema, 'goods')   // 若mongodb的collection为good,不是goods
+module.exports = mongoose.model('Good', productSchema, 'goods') // 若mongodb的collection为good,不是goods

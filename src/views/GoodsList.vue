@@ -2,8 +2,11 @@
     <div class="goodlist">
         <nav-header></nav-header>
         <nav-bread>
-            <span>Goods</span>
-            <span>phone</span>
+            <div class="goods" v-for="(item, idnex) in goodList">
+              <div class="item">
+                <span>名称:</span> {{item.productName}}  --  <span>价格:</span> {{item.salePrice}}
+              </div>
+            </div>
         </nav-bread>
         <nav-footer></nav-footer>
     </div>
@@ -21,6 +24,7 @@
         name: 'GoodsList',
         data(){
            return {
+             goodList: []
 
            }
         },
@@ -30,9 +34,14 @@
             NavBread 
         },
         mounted(){
-          axios.get('/goods').then((res) => {
-            console.log(res)
-            
+            this.$nextTick(function(){
+              axios.get('/goods').then((res) => {
+              console.log(res)
+              let resData = res.data
+              if(resData.status === '0'){
+                this.goodList = resData.result.list
+              } 
+             })
           })
         }
     }
