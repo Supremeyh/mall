@@ -166,11 +166,14 @@ pm2 logs 日志
 pm2 stop  <app_name|id|'all'|json_conf>  停止
 
 
-九、mongoose
+九、 mongoose
+
 启动数据库  mongod --config /usr/local/etc/mongod.conf
 启动node server端 pm2 start src/server/bin/www
 启动client端 npm run dev 
 
+
+//................. 后端部分 .................//
 
 npm install mongoose  --save  安装
 
@@ -218,12 +221,54 @@ mongoose.connection.on('disconnected', function() {
 })
 
 router.get('/', function(req, res, next) {
-  res.send('goods list')
+  Goods.find({}, function(err, doc) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err.message
+      })
+    } else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count: doc.length,
+          list: doc
+        }
+      })
+    }
+  })
 })
 
 module.exports = router
 
 
+//  /config/index.js  ，proxyTable 代理， 将http://localhost:8888 代理到 http://localhost:3000
+host: 'localhost', 
+port: 8888, //
+proxyTable: {
+  '/goods': {
+    target: 'http://localhost:3000'
+  }
+}
 
+
+
+//................. 前端部分 .................//
+
+// src/router/index.js  配置前端路由
+{ path: '/goods', name: 'GoodsList', component: GoodsList }
+
+// src/views/GoodsList.vue 
+axios.get('/goods').then((res) => {
+  let resData = res.data
+  if(resData.status === '0'){
+    this.goodList = resData.result.list
+  } 
+})
+
+
+启动client端 npm run dev 
+打开浏览器： http://localhost:8888/#/
 
 ```
