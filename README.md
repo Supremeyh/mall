@@ -220,8 +220,18 @@ mongoose.connection.on('disconnected', function() {
   console.log('mongoose connected disconnected')
 })
 
+
 router.get('/', function(req, res, next) {
-  Goods.find({}, function(err, doc) {
+  // url传参
+  let sort = req.param('sort')
+  let page = req.param('page')
+  let pageSize = req.param('pageSize')
+  let skip = (page - 1) * pageSize
+  let params = {}
+  let goodsModel = Goods.find(params).skip(skip).limit(pageSize)
+  goodsModel.sort({'salePrice': sort})
+  goodsModel.exec(function(err, doc) {
+  // Goods.find({}, function(err, doc) {
     if (err) {
       res.json({
         status: '1',
