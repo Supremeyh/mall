@@ -25,6 +25,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 登录拦截
+app.use(function(req, res, next) {
+  if (req.cookies.userId) {
+    next()
+  } else {
+    if (req.path === '/users/login' || req.path === '/users/logout') {
+      next()
+    } else {
+      res.json({
+        status: '10001',
+        msg: '未登录',
+        result: ''
+      })
+    }
+  }
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/goods', goodsRouter);
