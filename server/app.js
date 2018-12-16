@@ -30,6 +30,7 @@ app.use(function(req, res, next) {
   if (req.cookies.userId) {
     next()
   } else {
+    // 白名单
     if (req.path === '/users/login' || req.path === '/users/logout') {
       next()
     } else {
