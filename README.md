@@ -1,8 +1,9 @@
 # mall
 Vue2.0+Node.js+MongoDB  全栈打造商城系统
 
-一、vue-cli 3
 ```
+一、vue-cli 3
+
 全局安装vue cli3: npm i -g @vue/cli
 常见项目： vue create demo3
 或者，
