@@ -36,7 +36,7 @@
         mounted(){
             this.$nextTick(function(){
               axios.get('/goods').then((res) => {
-              console.log(res)
+              // console.log(res)
               let resData = res.data
               if(resData.status === '0'){
                 this.goodList = resData.result.list
